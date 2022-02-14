@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="{{ '/tailwind.css' | url }}">
   <link rel="stylesheet" href="{{ '/style.css' | url }}">
 </head>
-<body class="">
+<body class="bg-green-100">
+  {% include "header.njk" %}
   {{ content | safe }}
 </body>
 </html>

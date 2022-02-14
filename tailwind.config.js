@@ -7,7 +7,8 @@ module.exports = {
         change: 'transparent',
         "green": {
           "100": "#E0E0AC",
-          "200": "#A8C78B"
+          "200": "#A8C78B",
+          "300": "#55B14E",
         }
 
       },

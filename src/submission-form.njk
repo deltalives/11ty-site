@@ -1,50 +1,49 @@
 ---
 layout: layout
 title: "Delta Lives | Submission Portal"
-permalink: submission/
+permalink: /
 ---
 
 {% set htmlTitle = title %}
-<main>
-  <form action="https://delta-lives-strapi-backend.herokuapp.com/api/submissions" enctype="multipart/form-data" method="post"
+<main class="bg-white p-4 m-4 rounded-lg shadow">
+  <form enctype="multipart/form-data" method="post"
         class="flex flex-col gap-4 px-4 py-8
-                font-text text-sm leading-4">
-
+              text-lg leading-4">
+    <h1 class="text-xl">Media Upload / মিডিয়া জমা দিন</h1>
     <fieldset>
       <legend class="hidden">Name</legend>
       <input type="text" name="name" id="name" placeholder="Name" required
-              class="w-full px-2 py-2 border placeholder:text-black">
+              class="w-full px-2 py-4 border placeholder:text-gray">
     </fieldset>
 
     <fieldset>
       <legend class="hidden">Location</legend>
-      <input type="text" name="location" id="location" placeholder="Location" required
-              class="w-full px-2 py-2 border placeholder:text-black">
+      <input type="text" name="location" id="location" placeholder="Location /   অবস্থান" required
+              class="w-full px-2 py-4 border placeholder:text-gray">
     </fieldset>
 
     <fieldset>
       <legend class="hidden">Age</legend>
-      <input type="number" name="age" id="age" placeholder="Age"
-              class="w-full px-2 py-2 border placeholder:text-black">
+      <input type="number" name="age" id="age" placeholder="Age /  বয়স"
+              class="w-full px-2 py-4 border placeholder:text-gray">
     </fieldset>
 
     <fieldset>
       <legend class="hidden">Text</legend>
-      <input type="text" name="text" id="text" placeholder="Enter some text"
-              class="w-full px-2 py-2 border placeholder:text-black">
+      <input type="text" name="text" id="text" placeholder="Text /   লিখুন " required
+              class="w-full px-2 py-4 border placeholder:text-gray">
       
     </fieldset> 
 
     <fieldset>
-      <legend class="hidden">Media</legend>
+      <legend class="">Media /   মিডিয়া</legend>
       <input type="file" name="media" id="media" multiple>
       
     </fieldset> 
    
     <button type="submit"
-            class="mt-auto p-2
-                    self-center text-white font-display text-xs bg-black">
-      Submit
+            class="w-full p-4 text-white bg-green-300">
+      Submit /   জমা  দিন
     </button>
 
   </form>
