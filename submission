@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delta Lives</title>
+
+  <script defer src="/assets/js/alpine.js"></script>
+  <link rel="stylesheet" href="/tailwind.css">
+  <link rel="stylesheet" href="/style.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+</head>
+<body class="bg-green-100">
+  <header class="bg-green-200 py-4">
+  <nav>
+    <ul class="flex flex-row justify-center">
+      <li class="text-4xl font-bold">
+        <a href="">
+          <p>ৰ-জীবন:</p>
+        </a>
+      </li>
+    </ul>
+    
+  </nav>
+  
+</header>
+  
+
+<main class="bg-white p-4 m-4 rounded-xl shadow">
+  <form enctype="multipart/form-data" method="post"
+        class="flex flex-col gap-4 px-4 py-8
+              text-lg leading-4">
+    <h1 class="text-xl">Media Upload / মিডিয়া জমা দিন</h1>
+    <fieldset id="name-fieldset" class="flex flex-row items-center w-full border px-2">
+      <legend class="hidden">Name</legend>
+      <input type="text" name="name" id="name" placeholder="Name / নাম" required
+              class="w-full px-2 py-4 placeholder:text-gray">
+    </fieldset>
+
+    <fieldset id="location-fieldset" class="flex flex-row items-center w-full border px-2">
+      <legend class="hidden">Location</legend>
+      <input type="text" name="location" id="location" placeholder="Location / অবস্থান" required
+              class="w-full px-2 py-4 placeholder:text-gray">
+    </fieldset>
+
+    <fieldset id="age-fieldset" class="flex flex-row items-center w-full border px-2">
+      <legend class="hidden">Age</legend>
+      <input type="number" name="age" id="age" placeholder="Age / বয়স"
+              class="w-full px-2 py-4 placeholder:text-gray">
+    </fieldset>
+
+    <fieldset id="text-fieldset" class="flex flex-row items-center w-full border px-2">
+      <legend class="hidden">Text</legend>
+      <input type="text" name="text" id="text" placeholder="Text / লিখুন " required
+              class="w-full px-2 py-4 placeholder:text-gray">
+      
+    </fieldset> 
+
+    <h2>Media / মিডিয়া</h2>
+    <section class="flex flex-row justify-evenly w-full">
+      <fieldset class="">
+        <legend class="hidden">Media / মিডিয়া</legend>
+        <input type="file" name="media" id="media-video" multiple>
+      
+      </fieldset>
+      <fieldset class="">
+        <legend class="hidden">Media / মিডিয়া</legend>
+        <input type="file" name="media" id="media-image" multiple>
+      
+      </fieldset>
+      <fieldset class="">
+        <legend class="hidden">Media / মিডিয়া</legend>
+        <input type="file" name="media" id="media-audio" multiple>
+      
+      </fieldset>
+    </section>
+   
+    <button type="submit"
+            class="w-full p-4 text-white bg-green-300 rounded-lg">
+      Submit / জমা  দিন
+    </button>
+
+
+    <section id="log" class="hidden w-full flex flex-col gap-1">
+      <p id="log-info"></p>
+      <label class="">
+        <progress max="100" value="0" id="progress" class="w-full h-8 bg-gray"></progress>
+      </label>
+    </section>
+
+
+  </form>
+
+  <style>
+    fieldset {
+      border-radius: 0.5rem;
+      
+    }
+
+    input[type='file'] {
+      color: transparent;
+      width: 6rem;
+    }
+
+    input[type='file']::-webkit-file-upload-button {
+      
+      visibility: hidden;
+    }
+
+    #name-fieldset::before {
+      content: url('/assets/img/name.svg');
+    }
+    #location-fieldset::before {
+      content: url('/assets/img/location.svg');
+    }
+    #age-fieldset::before {
+      content: url('/assets/img/age.svg');
+    }
+    #text-fieldset::before {
+      content: url('/assets/img/text.svg');
+    }
+
+    #media-video::before {
+      content: url('/assets/img/media-video.svg');
+    }
+    #media-image::before {
+      content: url('/assets/img/media-image.svg');
+    }
+    #media-audio::before {
+      content: url('/assets/img/media-audio.svg');
+    }
+
+    input[type='file']::before {
+      display: inline-block;
+      width: 100%;
+      border: 1px solid #e5e7eb;
+      padding: 1rem 2rem;
+      outline: none;
+      white-space: nowrap;
+      -webkit-user-select: none;
+      cursor: pointer;
+      font-size: 2rem;
+      border-radius: 0.5rem;
+    }
+
+    fieldset::before {
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      
+    }
+  </style>
+
+</main>
+
+<script>
+  document.querySelector('form').addEventListener('submit', handleSubmit);
+  
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const progress = document.querySelector('progress')
+    const log = document.querySelector('#log')
+    const logInfo = document.querySelector('#log-info')
+    log.classList.remove('hidden');
+
+    const request = new XMLHttpRequest();
+    const formData = new FormData();
+    const formElements = event.target.elements;
+    const data = {};
+    for (let i = 0; i < formElements.length; i++) {
+      const currentElement = formElements[i];
+      if (!['submit', 'file'].includes(currentElement.type)) {
+        if(currentElement.value != "") {
+          data[currentElement.name] = currentElement.value;
+        }
+      } else if (currentElement.type === 'file') {
+        for (let i = 0; i < currentElement.files.length; i++) {
+        
+          const file = currentElement.files[i];
+          formData.append(`files.${currentElement.name}`, file, file.name);
+        }
+      }
+    }
+    formData.append('data', JSON.stringify(data));
+    request.addEventListener('loadstart', () => logInfo.innerText = 'uploading..')
+    request.upload.addEventListener('progress', (event) => {
+      const percent = event.loaded/event.total * 100
+      progress.value = percent
+    })
+    request.upload.addEventListener('load', () => logInfo.innerText = 'finished uploading.')
+    request.addEventListener('load', () => {
+      window.location.reload()
+    })
+
+    request.open('POST', `https://delta-lives-strapi-backend.herokuapp.com/api/submissions`);
+    request.send(formData)
+    
+  }
+</script>
+</body>
+</html>
