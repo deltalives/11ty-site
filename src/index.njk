@@ -1,0 +1,57 @@
+---
+layout: layout
+title: "Delta Lives"
+---
+
+<style>
+  #map {
+    height: 80vh;
+  }
+</style>
+
+<div id="map"></div>
+<section class="hidden">
+  {% for submission in list %}
+    <div id=submission-{{submission.id}}>
+      <p>{{ submission.name }} </p>
+      <img src={{submission.mediaUrl}} alt="image">
+    </div>
+  {% endfor %}
+</section>
+
+<script>
+  var map = L.map('map', {
+    crs: L.CRS.Simple,
+    {# minZoom: -2 #}
+  });
+  var bounds = [[0,0], [400,700]];
+  var image = L.imageOverlay('assets/img/terrain.jpg', bounds).addTo(map);
+  map.fitBounds(bounds);
+
+  var yx = L.latLng;
+  var xy = function(x, y) {
+      if (L.Util.isArray(x)) {    // When doing xy([x, y]);
+          return yx(x[1], x[0]);
+      }
+      return yx(y, x);  // When doing xy(x, y);
+  };
+
+  const init = async () => {
+    const submissions = await (await fetch('/submissions.json')).json()
+    submissions.forEach(item => {
+      let marker = xy(Math.random()*500, Math.random()*500)
+      let popup = L.popup()
+              .setContent(document.querySelector(`#submission-${item.id}`))
+      L.marker(marker).addTo(map).bindPopup(popup.getContent());
+    })
+
+
+  }
+
+  init()
+  
+
+  
+
+</script>
+

@@ -1,0 +1,14 @@
+---
+permalink: submissions.json
+---
+[
+{% for submission in list %}
+	{
+		"id":"{{submission.id}}",
+		"name":"{{submission.name}}",
+		"location":"{{submission.location}}",
+		"age":"{{submission.age}}",
+		"mediaUrl":"{{submission.mediaUrl}}"
+	}{% if loop.last == false %},{% endif %}	
+{% endfor %}
+]
