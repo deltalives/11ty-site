@@ -4,6 +4,7 @@
     "name": "Barnamala ",
     "location": "Bali, Bijoynagar ",
     "age": null,
+    "mediaType": "video",
     "mediaUrl": "https://res.cloudinary.com/deltalives/video/upload/v1645251057/VID_20220218_WA_0002_da8d1e4e9f.mp4"
   },
   {
@@ -11,6 +12,7 @@
     "name": "Barnamala ",
     "location": "Bali, Bijoynagar ",
     "age": null,
+    "mediaType": "video",
     "mediaUrl": "https://res.cloudinary.com/deltalives/video/upload/v1645251102/VID_20220218_WA_0002_960c566735.mp4"
   },
   {
@@ -18,6 +20,7 @@
     "name": "Barnamala",
     "location": "Bali 10 no. Bijoynagar ",
     "age": null,
+    "mediaType": "image",
     "mediaUrl": "https://res.cloudinary.com/deltalives/image/upload/v1645269760/Nov_6_2021_9_12_AM_1a99634258.jpg"
   },
   {
@@ -25,6 +28,7 @@
     "name": "Riya mondal",
     "location": "Bijay nagor 10 no ",
     "age": null,
+    "mediaType": "image",
     "mediaUrl": "https://res.cloudinary.com/deltalives/image/upload/v1645353952/IMG_20220219_WA_0013_5006df525d.jpg"
   },
   {
@@ -32,6 +36,7 @@
     "name": "Riya mondal",
     "location": "Bijay nagor 10 no ",
     "age": null,
+    "mediaType": "image",
     "mediaUrl": "https://res.cloudinary.com/deltalives/image/upload/v1645353955/IMG_20220219_WA_0013_01969385f2.jpg"
   },
   {
@@ -39,6 +44,7 @@
     "name": "Kanika Mandal",
     "location": "Bijoy Nagar 10 no",
     "age": 18,
+    "mediaType": "image",
     "mediaUrl": "https://res.cloudinary.com/deltalives/image/upload/v1645354311/IMG_20220219_161409_d92558eaf7.jpg"
   },
   {
@@ -46,6 +52,7 @@
     "name": "Pritha",
     "location": "Bally",
     "age": 28,
+    "mediaType": "image",
     "mediaUrl": "https://res.cloudinary.com/deltalives/image/upload/v1645518809/IMG_20220221_171055_cd157cfab2.jpg"
   },
   {
@@ -53,6 +60,7 @@
     "name": "সুজাতা মন্ডল",
     "location": "বালীর আট নম্বর",
     "age": null,
+    "mediaType": "image",
     "mediaUrl": "https://res.cloudinary.com/deltalives/image/upload/v1645520024/IMG_20220217140206_89fa1928fc.jpg"
   },
   {
@@ -60,6 +68,7 @@
     "name": "সুজাতা মন্ডল",
     "location": "বালীর আট নম্বর",
     "age": null,
+    "mediaType": "image",
     "mediaUrl": "https://res.cloudinary.com/deltalives/image/upload/v1645520031/IMG_20220217140206_71c9807754.jpg"
   },
   {
@@ -67,6 +76,7 @@
     "name": "সুজাতা মন্ডল",
     "location": "বালি  আট নম্বর",
     "age": null,
+    "mediaType": "image",
     "mediaUrl": "https://res.cloudinary.com/deltalives/image/upload/v1645624657/IMG_20220223_WA_0014_92495b7160.jpg"
   },
   {
@@ -74,6 +84,7 @@
     "name": "সুজাতা মন্ডল",
     "location": "বালি  আট নম্বর",
     "age": null,
+    "mediaType": "image",
     "mediaUrl": "https://res.cloudinary.com/deltalives/image/upload/v1645624657/IMG_20220223_WA_0014_57c668a053.jpg"
   }
 ]

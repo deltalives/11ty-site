@@ -9,11 +9,13 @@ const getSubmissions = async () => {
     
     const media = item.attributes.media.data[0].attributes
     let mediaUrl = media.url
+
     return {
       id: item.id,
       name: item.attributes.name,
       location: item.attributes.location,
       age: item.attributes.age,
+      mediaType: media.provider_metadata.resource_type,
       mediaUrl: mediaUrl,
     }
   })

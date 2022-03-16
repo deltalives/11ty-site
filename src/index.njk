@@ -3,18 +3,19 @@ layout: layout
 title: "Delta Lives"
 ---
 
-<style>
-  #map {
-    height: 80vh;
-  }
-</style>
-
-<div id="map"></div>
+<div class="flex-1" id="map"></div>
 <section class="hidden">
   {% for submission in list %}
-    <div id=submission-{{submission.id}}>
+    <div id=submission-{{submission.id}}
+          class="w-full h-full">
       <p>{{ submission.name }} </p>
+      <p>{{ submission.description }} </p>
+      {% if submission.mediaType == 'image' %}
       <img src={{submission.mediaUrl}} alt="image">
+      {% endif %}
+      {% if submission.mediaType == 'video' %}
+      <video src="{{submission.mediaUrl}}" controls></video>
+      {% endif %}
     </div>
   {% endfor %}
 </section>
@@ -22,10 +23,11 @@ title: "Delta Lives"
 <script>
   var map = L.map('map', {
     crs: L.CRS.Simple,
-    {# minZoom: -2 #}
+    minZoom: -1
   });
-  var bounds = [[0,0], [400,700]];
-  var image = L.imageOverlay('assets/img/terrain.jpg', bounds).addTo(map);
+  const imgWidth = 2000, imgHeight = 1128
+  var bounds = [[0,0], [imgHeight, imgWidth]];
+  var image = L.imageOverlay('assets/img/map.png', bounds).addTo(map);
   map.fitBounds(bounds);
 
   var yx = L.latLng;
@@ -39,7 +41,7 @@ title: "Delta Lives"
   const init = async () => {
     const submissions = await (await fetch('/submissions.json')).json()
     submissions.forEach(item => {
-      let marker = xy(Math.random()*500, Math.random()*500)
+      let marker = xy(Math.random()*imgWidth, Math.random()*imgHeight)
       let popup = L.popup()
               .setContent(document.querySelector(`#submission-${item.id}`))
       L.marker(marker).addTo(map).bindPopup(popup.getContent());
